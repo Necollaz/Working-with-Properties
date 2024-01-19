@@ -1,33 +1,34 @@
+using System;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
         Renderer renderer = new Renderer();
-        Player player = new Player(5,5);
-        renderer.Draw(player.X, player.Y, '@');
-
+        Player player = new Player(5, 5);
+        renderer.Draw(player.PositionX, player.PositionY, '@');
     }
 }
 
 class Player
 {
-    public int X { get; private set; }
-    public int Y { get; private set; }
-
-    public Player(int x, int y)
+    public Player(int positionX, int positionY)
     {
-        X = x;
-        Y = y;
+        PositionX = positionX;
+        PositionY = positionY;
     }
+
+    public int PositionX { get; private set; }
+    public int PositionY { get; private set; }
 }
 
 class Renderer
 {
-    public void Draw(int x, int y, char symbol)
+    public void Draw(int positionX, int positionY, char playerSymbol)
     {
         Console.CursorVisible = false;
-        Console.SetCursorPosition(x, y);
-        Console.Write(symbol);
+        Console.SetCursorPosition(positionX, positionY);
+        Console.Write(playerSymbol);
         Console.ReadKey(true);
     }
 }
